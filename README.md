@@ -18,6 +18,7 @@ To test the performance, please rune `./test_server`.
 
 * Runs on Linux.
 * Does not use any third party networking library, i.e. use only Linux system API.
+* Uses epoll for IO multiplexing using edge-triggered notification.
 * Supports persistent connections along with a timeout after inactivity.
 * Supports caching(Appropriately sets Last-modified, max-age and Cache-control headers).
 * Support for content-type header.
