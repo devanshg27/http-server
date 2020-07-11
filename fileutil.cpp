@@ -4,9 +4,9 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-bool isDirectory(const std::string& root_path) {
+bool isDirectory(const std::string& path) {
     struct stat sb;
-    if (stat(root_path.data(), &sb) == -1) {
+    if (stat(path.data(), &sb) == -1) {
         perror("stat");
         exit(EXIT_FAILURE);
     }

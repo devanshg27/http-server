@@ -1,31 +1,28 @@
 #ifndef HTTP_SERVER_MAIN_H
 #define HTTP_SERVER_MAIN_H
 
+#include "httputil.h"
 #include <chrono>
 #include <unistd.h>
 #include <string>
 #include <set>
+#include <list>
 
 const int MAX_EPOLL_EVENTS = 256;
 const int TIMEOUT = 7; // in seconds
 
+class response;
+
 class dict_epoll_data{
 public:
-//    char* body_bufptr;          // offset in dict array data
     int fd;
-//    int body_cnt;               // how remainning byte
-//
-//    char headers[RESP_HEADER_LENTH];
-//    char *headers_bufptr;       // header pointer
-//    int headers_cnt;            // header length unwrite
-//    int static_fd;
-//    int file_cnt;               // unwrite file
-//    off_t file_offset;
+    bool invalid_request_header;
+    std::string request_headers;
     decltype(std::chrono::steady_clock::now()) last_access_time;
-    bool something_to_write;
+    std::list<response> to_write;
     explicit dict_epoll_data(int __fd) : fd(__fd) {
         last_access_time = std::chrono::steady_clock::now();
-        something_to_write = false;
+        invalid_request_header = false;
     }
 
     ~dict_epoll_data() {

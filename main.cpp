@@ -134,7 +134,7 @@ void accept_conns_loop(int server_fd, int epoll_fd, const std::string& root_path
             }
             else if(event_mask & EPOLLOUT) {
                 timeout_sockets.remove((dict_epoll_data*) epoll_events[i].data.ptr);
-                if(write_response((dict_epoll_data*) epoll_events[i].data.ptr, root_path)) {
+                if(write_response((dict_epoll_data*) epoll_events[i].data.ptr)) {
                     timeout_sockets.add((dict_epoll_data*) epoll_events[i].data.ptr);
                 }
             }

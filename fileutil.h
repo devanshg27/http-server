@@ -3,6 +3,6 @@
 
 #include <string>
 
-bool isDirectory(const std::string& root_path);
+bool isDirectory(const std::string&);
 
 #endif //HTTP_SERVER_FILEUTIL_H
