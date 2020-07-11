@@ -149,7 +149,7 @@ int main() {
     auto t_end = std::chrono::steady_clock::now();
     double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end-t_start).count();
 
-    std::cout << successful << "connections served in " << elapsed_time_ms/1000 <<" seconds." << std::endl;
+    std::cout << successful << " connections served in " << elapsed_time_ms/1000 <<" seconds." << std::endl;
 
     return 0;
 }
