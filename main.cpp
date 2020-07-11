@@ -122,7 +122,7 @@ void accept_conns_loop(int server_fd, int epoll_fd, const std::string& root_path
                 accept_incoming_connection(server_fd, epoll_fd, timeout_sockets);
             }
             else if((event_mask & EPOLLRDHUP) || (event_mask & EPOLLERR) || (event_mask & EPOLLHUP)) {
-                std::cerr << "epoll event error\n";
+                if(!(event_mask & EPOLLRDHUP)) std::cerr << "epoll event error\n";
                 timeout_sockets.remove((dict_epoll_data*) epoll_events[i].data.ptr);
                 delete (dict_epoll_data*) epoll_events[i].data.ptr;
             }

@@ -8,6 +8,7 @@
 #include <sys/epoll.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <chrono>
 
 #define PORT 8080
 #define SERVER "127.0.0.1"
@@ -43,6 +44,8 @@ int main() {
     int epfd = epoll_create(1);
 
     int times = 100, successful = 0;
+
+    auto t_start = std::chrono::steady_clock::now();
 
     for(int j=0; j<times; ++j) {
         int count = 1000;
@@ -143,7 +146,10 @@ int main() {
         }
     }
 
-    std::cout << successful << std::endl;
+    auto t_end = std::chrono::steady_clock::now();
+    double elapsed_time_ms = std::chrono::duration<double, std::milli>(t_end-t_start).count();
+
+    std::cout << successful << "connections served in " << elapsed_time_ms/1000 <<" seconds." << std::endl;
 
     return 0;
 }
