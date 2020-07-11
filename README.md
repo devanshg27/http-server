@@ -12,7 +12,7 @@ make
 
 For demo purposes, please run `./http_server public 8080` and open `localhost:8080` in any browser.
 
-To test the performance, please rune `./test_server`.
+To test the performance, please rune `./test_server`(http_server has to run on port 8080 only).
 
 ## Features
 
