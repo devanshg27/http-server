@@ -26,7 +26,7 @@ public:
             char buff[4096];
             sprintf(
                 buff,
-                "HTTP/1.1 200 OK\r\nContent-length: %lu\r\nCache-Control: max-age=86400, public\r\nContent-type: %s\r\nLast-Modified:%s\r\n\r\n",
+                "HTTP/1.1 200 OK\r\nContent-length: %lu\r\nCache-Control: max-age=86400, public\r\nContent-type: %s\r\nLast-Modified: %s\r\n\r\n",
                 file_size,
                 file_type,
                 modified

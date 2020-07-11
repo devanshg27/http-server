@@ -156,7 +156,7 @@ void serve_file(dict_epoll_data* ptr, const std::string& file_path, bool isGet) 
                         200,
                         -1,
                         result.st_size,
-                        mime_types.find(file_path.substr(lpos + 1))->second.c_str(),
+                        mime_types.find(file_path.substr(lpos))->second.c_str(),
                         file_modified_time
                 );
                 close(file_fd);
@@ -166,7 +166,7 @@ void serve_file(dict_epoll_data* ptr, const std::string& file_path, bool isGet) 
                         200,
                         file_fd,
                         result.st_size,
-                        mime_types.find(file_path.substr(lpos + 1))->second.c_str(),
+                        mime_types.find(file_path.substr(lpos))->second.c_str(),
                         file_modified_time
                 );
             }
