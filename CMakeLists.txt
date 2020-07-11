@@ -7,3 +7,4 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 add_executable(http_server main.cpp fileutil.h fileutil.cpp httputil.cpp httputil.h main.h)
+add_executable(test_server test.cpp)
