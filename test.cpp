@@ -39,7 +39,7 @@ int main() {
     struct sockaddr_in dest;
     char buffer[MAXBUF];
     struct epoll_event events[MAX_EPOLL_EVENTS];
-    int i, num_ready;
+    int num_ready;
 
     int epfd = epoll_create(1);
 
